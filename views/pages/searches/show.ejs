@@ -7,7 +7,7 @@
     <main>
       <ul>
         <% renderedContent.forEach(book => { %>
-          <li>This is the book: <%= book.title %></li>
+          <li><img src="<%= book.image %>" alt="<%= book.title %>"> <%= book.title %> <%= book.authors %> <%= book.description %></li>
         <% }) %>
       </ul>
     </main>
