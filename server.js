@@ -34,15 +34,18 @@ function collectFormInformation(request, response){
 
   superagent.get(url)
     .then(data => {
+      // console.log(data.body.items[1])
       const bookArray = data.body.items;
       const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
-
       response.render('pages/searches/show', {renderedContent: finalBookArray});
     })
 }
 
 function Book(book){
   this.title = book.title;
+  this.description = book.description;
+  this.authors = book.authors;
+  this.image = book.imageLinks ? book.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
 }
 
 app.listen(PORT, () => {
