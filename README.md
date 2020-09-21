@@ -20,6 +20,18 @@ Book App is a full-stack application for a book list which will include the abil
   - EJS
 - deployed to heroku
 
+# Day 1 | Feature 1 | Initial Setup
+Estimate of time needed to complete: 60 minutes
+Start time: 1:45 pm
+Finish time: 2:30 pm
+Actual time needed to complete: 45 minutes
+
+# Day 1 | Feature 2 | Google Books API
+Estimate of time needed to complete: 60 minutes
+Start time: 2:30 pm
+Finish time: 3:00 pm
+Actual time needed to complete: 30 minutes
+
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
