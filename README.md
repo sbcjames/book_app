@@ -38,11 +38,11 @@ Start time: 3:00 pm
 Finish time: 4:30 pm
 Actual time needed to complete: 90 minutes
 
-# Day 1 | Feature 4 | Google Books API
-Estimate of time needed to complete: 60 minutes
+# Day 1 | Feature 4 | Error
+Estimate of time needed to complete: 30 minutes
 Start time: 4:30 pm
-Finish time: 4:30 pm
-Actual time needed to complete: 60 minutes
+Finish time: 4:39 pm
+Actual time needed to complete: 9 minutes
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:

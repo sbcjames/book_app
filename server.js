@@ -39,6 +39,9 @@ function collectFormInformation(request, response){
       const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
       response.render('pages/searches/show', {renderedContent: finalBookArray});
     })
+    .catch(error =>{
+      response.render('pages/error');
+    })
 }
 
 function Book(book){
