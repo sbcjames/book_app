@@ -1,0 +1,26 @@
+form{
+  padding: 10px;
+}
+
+fieldset{
+  padding: 5px;
+}
+
+input{
+  background-color: white;
+}
+
+button{
+  background-color: darkmagenta;
+}
+
+main{
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width:768px){
+  body{
+    background-color: lightpink;
+  }
+}
