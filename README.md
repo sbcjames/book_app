@@ -44,6 +44,18 @@ Start time: 4:30 pm
 Finish time: 4:39 pm
 Actual time needed to complete: 9 minutes
 
+# Day 1 | Feature 5 | CSS
+Estimate of time needed to complete: 30 minutes
+Start time: 4:40 pm
+Finish time: 5:40 pm
+Actual time needed to complete: 60 minutes
+
+# Day 1 | Feature 6 | Home Page
+Estimate of time needed to complete: 30 minutes
+Start time: 5:45 pm
+Finish time: 6:15 pm
+Actual time needed to complete: 30 minutes
+
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
