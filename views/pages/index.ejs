@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <h1>Hello World</h1>
+    <title>Book Collection</title>
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/modules.css">
   </head>
+  <body>
+    <main>
+      <ul>
+        <% renderedContent.forEach(book => { %>
+          <li><img src="<%= book.image %>" alt="<%= book.title %>">
+         <p id="title"> <%= book.title %> </p>
+         <p id="author"><%= book.authors %> </p>
+         <p><%= book.description %></p></li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
 </html>

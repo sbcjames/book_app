@@ -4,6 +4,12 @@ const express = require('express');
 const app = express();
 require('ejs');
 const superagent = require('superagent');
+const pg = require('pg');
+
+const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', error => {
+  console.log(error);
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +21,18 @@ app.get('/searchform', renderSearchForm);
 app.post('/searches', collectFormInformation);
 
 function renderHome(req, res){
-  res.render('pages/index');
+  console.log('inside render home')
+  const sql = 'SELECT * FROM booktable;';
+  return client.query(sql)
+    .then(results => {
+      console.log(results.rows);
+      let allbooks = results.rows;
+      res.status(200).render('pages/index', {renderedContent: allbooks});
+    })
+    .catch(error =>{
+      console.log(error)
+      res.render('pages/error');
+    })
 }
 
 function renderSearchForm (req, res) {
@@ -24,7 +41,7 @@ function renderSearchForm (req, res) {
 }
 
 function collectFormInformation(request, response){
-  console.log(request.body);
+  // console.log(request.body);
   const searchQuery = request.body.search[0];
   const searchType = request.body.search[1];
 
@@ -34,7 +51,7 @@ function collectFormInformation(request, response){
 
   superagent.get(url)
     .then(data => {
-      // console.log(data.body.items[1])
+      console.log(data.body.items[2])
       const bookArray = data.body.items;
       const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
       response.render('pages/searches/show', {renderedContent: finalBookArray});
@@ -51,6 +68,10 @@ function Book(book){
   this.image = book.imageLinks ? book.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
 }
 
-app.listen(PORT, () => {
-  console.log(`Server is ALIVE and listening on port ${PORT}`);
-});
+client.connect()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is ALIVE and listening on port ${PORT}`);
+    });
+  })
+
