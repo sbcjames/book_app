@@ -1,0 +1,22 @@
+li{
+  border: 1px solid black;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+}
+
+h4{
+  text-align: center;
+}
+
+img{
+  margin: auto;  
+}
+
+#title{
+  font-weight: bolder;
+}
+
+#author{
+  font-style: italic;
+}
