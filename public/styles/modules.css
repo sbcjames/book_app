@@ -1,3 +1,7 @@
+#edit{
+  display: none;
+}
+
 li{
   border: 1px solid black;
   justify-content: center;
@@ -12,6 +16,7 @@ h4{
 img{
   margin: auto;  
 }
+
 
 #title{
   font-weight: bolder;

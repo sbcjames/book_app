@@ -30,6 +30,9 @@ app.post('/searches', collectFormInformation);
 app.post('/books', addBookToDatabase);
 app.get('/books/:book_id', getOneBook);
 app.put('/update/:book_id', updateOneBook);
+app.delete('/update/:book_id', deleteBook);
+app.get('*', handleError);
+
 
 function renderHome(req, res){
   console.log('inside render home')
@@ -55,6 +58,13 @@ function updateOneBook(request, response){
   response.status(200).redirect(`/books/${id}`);
 }
 
+function deleteBook(request, response) {
+  const id = request.params.book_id;
+  let sql = 'DELETE FROM booktable WHERE id=$1;';
+  let safeValues = [id];
+  client.query(sql, safeValues);
+  response.status(200).redirect('/');
+}
 
 function getOneBook(request, response) {
   const id = request.params.book_id;
@@ -113,11 +123,15 @@ function collectFormInformation(request, response){
 }
 
 function Book(book){
-  this.title = book.title;
-  this.description = book.description;
-  this.authors = book.authors;
+  this.title = book.title ? book.title : 'no title found';
+  this.description = book.description ? book.description : 'no description found';
+  this.authors = book.authors ? book.authors : 'no author found';
   this.isbn = book.industryIdentifiers ? book.industryIdentifiers[0].identifier : 'No ISBN available ';
-  this.image = book.imageLinks ? book.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
+  this.image = book.imageLinks ? book.imageLinks.thumbnail.replace(/^http:\/\//i, 'https://'): `https://i.imgur.com/J5LVHEL.jpg`;
+}
+
+function handleError(req,res){
+  res.status(404).render('pages/error');
 }
 
 client.connect()

@@ -1,7 +1,7 @@
 # Book App
 
 **Author**: James Swift and Sara Strasner
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 3.7.22
 
 ## Overview
 Book App is a full-stack application for a book list which will include the ability to search the Google Books API, add books to a database, and then render those books from a PostgreSQL database.
@@ -9,6 +9,8 @@ Book App is a full-stack application for a book list which will include the abil
 ## Getting Started
 1. Create server with Express
 1. Deploy to Heroku
+1. Add server functionality - add/edit/delete
+1. Add CSS
 
 ## Architecture
 - HTML
@@ -86,12 +88,32 @@ Start time: 8:30 pm
 Finish time: 9:30 pm
 Actual time needed to complete: 60 minutes
 
+# Day 3 | Feature 1 | Update Server
+Estimate of time needed to complete: 60 minutes
+Start time: 2:30 pm
+Finish time: 3:30 pm
+Actual time needed to complete: 60 minutes
+
+# Day 3 | Feature 2 | Delete Server
+Estimate of time needed to complete: 60 minutes
+Start time: 3:30 pm
+Finish time: 4:00 pm
+Actual time needed to complete: 30 minutes
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+09-21-2020 2:59pm - Server created
+09-21-2020 4:59pm - Application deployed to heroku
+09-21-2020 5:59pm - Search function complete
+09-21-2020 6:59pm - Application connected to Google Books API
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+09-22-2020 1:59pm - Updated homepage to saved books
+09-22-2020 4:59pm - created details page for selected book
+09-22-2020 4:59pm - Additional CSS styling
+
+09-23-2020 4:59pm - Update functionality
+09-23-2020 4:59pm - Delete functionality
+09-23-2020 4:59pm - Additional CSS styling
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+- Chance Harmon, our patient TA
+- W3 Schools
