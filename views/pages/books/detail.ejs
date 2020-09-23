@@ -2,18 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BookDetails</title>
-  <link rel="stylesheet" href="public/styles/reset.css">
-  <link rel="stylesheet" href="public/styles/base.css">
-  <link rel="stylesheet" href="/styles/layout.css">
-  <link rel="stylesheet" href="/styles/modules.css">
+  <%- include('../../layout/head.ejs') %>
 </head>
 <body>
   <h1><%= value.title %></h1>
   <p><%= value.description %></p>
   <p><%= value.author %></p>
   <img src="<%= value.image_url %>" alt="<%= value.title %>">
+  <%- include('edit.ejs') %>
 </body>
+<footer>
+  <script src="/public/js/app.js"></script> 
+  <%- include('../../layout/footer.ejs') %>
+  <a href="/">Back to List of Books</a>
+</footer>
 </html>

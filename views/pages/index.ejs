@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <title>Book Collection</title>
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/layout.css">
-    <link rel="stylesheet" href="/styles/modules.css">
+    <%- include('../layout/head.ejs') %>
   </head>
   <body>
     <main>
@@ -20,5 +17,8 @@
         <% }) %>
       </ul>
     </main>
+    <footer>
+      <%- include('../layout/footer.ejs') %>
+    </footer>
   </body>
 </html>

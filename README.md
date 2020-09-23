@@ -62,11 +62,30 @@ Start time: 2:00 pm
 Finish time: 4:00 pm
 Actual time needed to complete: 120 minutes
 
+# Day 2 | Feature 2 | Book Detail
+Estimate of time needed to complete: 60 minutes
+Start time: 6:30 pm
+Finish time: 7:30 pm
+Actual time needed to complete: 120 minutes
+
 # Day 2 | Feature 3 | Book Detail
 Estimate of time needed to complete: 60 minutes
 Start time: 2:00 pm
 Finish time: 6:30 pm
-Actual time needed to complete: 4.5 hours
+Actual time needed to complete: 60 minutes
+
+# Day 2 | Feature 4 | Callbacks
+Estimate of time needed to complete: 60 minutes
+Start time: 7:30 pm
+Finish time: 8:30 pm
+Actual time needed to complete: 60 minutes
+
+# Day 2 | Feature 5 | CSS
+Estimate of time needed to complete: 60 minutes
+Start time: 8:30 pm
+Finish time: 9:30 pm
+Actual time needed to complete: 60 minutes
+
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
