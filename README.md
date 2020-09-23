@@ -56,6 +56,18 @@ Start time: 5:45 pm
 Finish time: 6:15 pm
 Actual time needed to complete: 30 minutes
 
+# Day 2 | Feature 1 | Database
+Estimate of time needed to complete: 60 minutes
+Start time: 2:00 pm
+Finish time: 4:00 pm
+Actual time needed to complete: 120 minutes
+
+# Day 2 | Feature 3 | Book Detail
+Estimate of time needed to complete: 60 minutes
+Start time: 2:00 pm
+Finish time: 6:30 pm
+Actual time needed to complete: 4.5 hours
+
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 

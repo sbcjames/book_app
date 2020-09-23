@@ -15,6 +15,16 @@
          <p id="title"> <%= book.title %> </p>
          <p id="author"><%= book.authors %> </p>
          <p><%= book.description %></p></li>
+         <form id="addtoCollection" action="/books" method="post">
+         <fieldset>
+          <input type="hidden" name="title" value="<%= book.title %>">
+          <input type="hidden" name="authors" value="<%= book.authors[0] %>">
+          <input type="hidden" name="description" value="<%= book.description %>">
+          <input type="hidden" name="isbn" value="<%= book.isbn %>">
+          <input type="hidden" name="image" value="<%= book.image %>">
+          <button type="submit">Add This Book to my Database</button>
+        </fieldset>
+        </form>
         <% }) %>
       </ul>
     </main>

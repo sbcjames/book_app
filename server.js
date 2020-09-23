@@ -22,6 +22,8 @@ app.use(express.urlencoded({extended:true}));
 app.get('/', renderHome);
 app.get('/searchform', renderSearchForm);
 app.post('/searches', collectFormInformation);
+app.post('/books', addBookToDatabase);
+app.get('/books/:book_id', getOneBook);
 
 function renderHome(req, res){
   console.log('inside render home')
@@ -38,10 +40,39 @@ function renderHome(req, res){
     })
 }
 
+
+function getOneBook(request, response) {
+  const id = request.params.book_id;
+  console.log('in the get one book', id);
+  // now that I have the id, I can use it to look up the task in the database using the id, pull it out and display it to the user
+  const sql = 'SELECT * FROM booktable WHERE id=$1;';
+  const safeValues = [id];
+  client.query(sql, safeValues).then((results) => {
+    console.log(results);
+    // results.rows will look like this: [{my task}]
+    const myChosenBook = results.rows[0];
+    response.render('pages/books/detail', { value: myChosenBook });
+  });
+}
+
 function renderSearchForm (req, res) {
   res.render('pages/searches/new.ejs');
-
 }
+
+function addBookToDatabase (req,res){
+  const {authors,title, isbn, image, description} = req.body;
+  const sql = 'INSERT INTO booktable (author,title, isbn, image_url, description) VALUES ($1,$2,$3,$4,$5) RETURNING id;';
+  const safeValues = [authors,title, isbn, image, description];
+  client.query(sql, safeValues)
+    .then((idFromSQL) => {
+      console.log(idFromSQL);
+      res.redirect(`books/${idFromSQL.rows[0].id}`)
+    }).catch((error) => {
+      console.log(error);
+      res.render('pages/error');
+    });
+}
+
 
 function collectFormInformation(request, response){
   // console.log(request.body);
@@ -68,6 +99,7 @@ function Book(book){
   this.title = book.title;
   this.description = book.description;
   this.authors = book.authors;
+  this.isbn = book.industryIdentifiers ? book.industryIdentifiers[0].identifier : 'No ISBN available ';
   this.image = book.imageLinks ? book.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
 }
 

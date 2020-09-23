@@ -9,11 +9,12 @@
   </head>
   <body>
     <main>
+      <h2>Total books in Database: <%= renderedContent.length %></h2>
       <ul>
         <% renderedContent.forEach(book => { %>
-          <li><img src="<%= book.image %>" alt="<%= book.title %>">
+          <li><img src="<%= book.image_url %>" alt="<%= book.title %>">
          <p id="title"> <%= book.title %> </p>
-         <p id="author"><%= book.authors %> </p>
+         <p id="author"><%= book.author %> </p>
          <p><%= book.description %></p></li>
         <% }) %>
       </ul>
