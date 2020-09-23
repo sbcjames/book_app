@@ -17,8 +17,10 @@ client.on('error', error => {
 const PORT = process.env.PORT || 3001;
 
 app.set('view engine', 'ejs');
+
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
+
 app.get('/', renderHome);
 app.get('/searchform', renderSearchForm);
 app.post('/searches', collectFormInformation);
@@ -40,19 +42,19 @@ function renderHome(req, res){
     })
 }
 
-
 function getOneBook(request, response) {
   const id = request.params.book_id;
   console.log('in the get one book', id);
   // now that I have the id, I can use it to look up the task in the database using the id, pull it out and display it to the user
   const sql = 'SELECT * FROM booktable WHERE id=$1;';
   const safeValues = [id];
-  client.query(sql, safeValues).then((results) => {
-    console.log(results);
-    // results.rows will look like this: [{my task}]
-    const myChosenBook = results.rows[0];
-    response.render('pages/books/detail', { value: myChosenBook });
-  });
+  client.query(sql, safeValues)
+    .then((results) => {
+      console.log(results);
+      // results.rows will look like this: [{my task}]
+      const myChosenBook = results.rows[0];
+      response.render('pages/books/detail', { value: myChosenBook });
+    });
 }
 
 function renderSearchForm (req, res) {
@@ -61,8 +63,8 @@ function renderSearchForm (req, res) {
 
 function addBookToDatabase (req,res){
   const {authors,title, isbn, image, description} = req.body;
-  const sql = 'INSERT INTO booktable (author,title, isbn, image_url, description) VALUES ($1,$2,$3,$4,$5) RETURNING id;';
-  const safeValues = [authors,title, isbn, image, description];
+  const sql = 'INSERT INTO booktable (author, title, isbn, image_url, description) VALUES ($1,$2,$3,$4,$5) RETURNING id;';
+  const safeValues = [authors, title, isbn, image, description];
   client.query(sql, safeValues)
     .then((idFromSQL) => {
       console.log(idFromSQL);
@@ -91,6 +93,7 @@ function collectFormInformation(request, response){
       response.render('pages/searches/show', {renderedContent: finalBookArray});
     })
     .catch(error =>{
+      console.log(error)
       response.render('pages/error');
     })
 }
