@@ -1,0 +1,9 @@
+<h2>Update Book</h2>
+<form id="edit" action="/update/<%= value.id %>?_method=PUT" method="post">
+  <input type="text" name="title" value="<%= value.title %>" placeholder=" title" />
+  <input type="text" name="description" value="<%= value.description %>" placeholder=" description" />
+  <input type="text" name="isbn" value="<%= value.isbn %>" placeholder=" isbn" />
+  <input type="text" name="image" value="<%= value.image_url %>" placeholder=" Image URL" />
+  <input type="text" name="author" value="<%= value.author %>" placeholder=" Author" />
+  <button type="submit">Update Book Details</button>
+</form>

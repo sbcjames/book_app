@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <title>Book Collection</title>
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/layout.css">
-    <link rel="stylesheet" href="/styles/modules.css">
+    <%- include('../../layout/head.ejs') %>
   </head>
   <body>
     <main>
@@ -18,7 +15,7 @@
          <form id="addtoCollection" action="/books" method="post">
          <fieldset>
           <input type="hidden" name="title" value="<%= book.title %>">
-          <input type="hidden" name="authors" value="<%= book.authors[0] %>">
+          <input type="hidden" name="authors" value="<%= book.authors %>">
           <input type="hidden" name="description" value="<%= book.description %>">
           <input type="hidden" name="isbn" value="<%= book.isbn %>">
           <input type="hidden" name="image" value="<%= book.image %>">
@@ -28,5 +25,8 @@
         <% }) %>
       </ul>
     </main>
+    <footer>
+      <%- include('../../layout/footer.ejs') %>
+    </footer>
   </body>
 </html>

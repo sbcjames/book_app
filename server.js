@@ -8,6 +8,8 @@ const app = express();
 require('ejs');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
+
 
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => {
@@ -20,12 +22,14 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
 
 app.get('/', renderHome);
 app.get('/searchform', renderSearchForm);
 app.post('/searches', collectFormInformation);
 app.post('/books', addBookToDatabase);
 app.get('/books/:book_id', getOneBook);
+app.put('/update/:book_id', updateOneBook);
 
 function renderHome(req, res){
   console.log('inside render home')
@@ -41,6 +45,16 @@ function renderHome(req, res){
       res.render('pages/error');
     })
 }
+
+function updateOneBook(request, response){
+  const id = request.params.book_id;
+  const {authors, title, isbn, image, description} = request.body;
+  let sql = 'UPDATE booktable SET author=$1, title=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6;';
+  let safeValues = [authors, title, isbn, image, description, id];
+  client.query(sql, safeValues);
+  response.status(200).redirect(`/books/${id}`);
+}
+
 
 function getOneBook(request, response) {
   const id = request.params.book_id;
