@@ -1,9 +1,11 @@
 $(document).ready(function() {
-  console.log( 'JS is ready!' );
+  // $('#edit').hide();
+  console.log('JS is ready!');
 });
 
-$('button').on('change', showTemplate);
+$('#callForm').on('click', showTemplate);
 
 function showTemplate() {
+  console.log('in function!!');
   $('#edit').show();
 }
